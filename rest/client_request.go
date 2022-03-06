@@ -8,6 +8,19 @@ import (
 	"time"
 )
 
+// shutdownRequest doesn't get an actual response from the server and thus
+// doesn't process a server reply. It only returns an error if there was
+// 1) A network transmission error i.e. offline
+// 2) An incorrect server URI
+// 3) The server was already taken offline before
+// https://support.objectivity.com/sites/default/files/docs/ig/latest/index.html#page/topics%2Frest%2FrestVersionShutdownPOST.html%23
+func (c *Client) shutdownRequest(r Requester) error {
+	req := c.newRequest(r)
+	res := fasthttp.AcquireResponse()
+	err := c.HTTPC.DoTimeout(req, res, c.HTTPTimeout)
+	return checkError(err)
+}
+
 // used for JSON unmarshaling
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
 

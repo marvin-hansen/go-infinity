@@ -22,9 +22,7 @@ func (c *Client) Resources(req *server.RequestForResources) (*server.ResponseFor
 
 // ShutdownServer Terminates the InfiniteGraph REST server running at the provided URL.
 func (c *Client) ShutdownServer(req *server.RequestForShutdown) error {
-	results := server.NewResponseForShutdown()
-	if err := c.request(req, results); err != nil {
-		return err
-	}
-	return nil
+	err := c.shutdownRequest(req)
+	return checkError(err)
+
 }

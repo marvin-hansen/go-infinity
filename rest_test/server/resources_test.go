@@ -1,4 +1,4 @@
-package rest
+package server
 
 import (
 	"github.com/stretchr/testify/assert"
@@ -9,7 +9,7 @@ import (
 
 func TestRequestForResources(t *testing.T) {
 	c := rest.NewClient(nil)
-	assert.NotNil(t, c, "Should not be nil")
+	assert.NotNil(t, c, "Client should not be nil")
 
 	res, err := c.Resources(server.NewRequestForResources("v1"))
 	assert.NoError(t, err)

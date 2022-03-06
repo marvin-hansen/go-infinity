@@ -7,3 +7,11 @@ func getEndpoint(config *ClientConfig) string {
 		return config.GetConnectionString()
 	}
 }
+
+func checkError(err error) error {
+	if err != nil {
+		return err
+	} else {
+		return nil
+	}
+}

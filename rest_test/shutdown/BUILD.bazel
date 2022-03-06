@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "shutdown_test",
+    srcs = ["server_shutodown_test.go"],
+    deps = [
+        "//rest",
+        "//rest/server",
+        "@com_github_stretchr_testify//assert",
+    ],
+)
