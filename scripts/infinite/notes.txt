@@ -1,0 +1,17 @@
+
+# Create a DB (on the graph server / container)
+
+ objy CreateFd -fdName kb -fdDirPath data
+
+Should yield
+
+Federated Database successfully created:
+  FD Dir Host      : c59428ef2ec8
+  FD Dir Path      : /app/data
+  System DB file   : kb.fdb
+  Boot file        : kb.boot
+  Lock server host : c59428ef2ec8
+
+# Start REST API
+
+objy StartRESTServer -fdAlias kb -configFile restApiConfig.xml
