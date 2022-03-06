@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+filegroup(
+    name = "build",
+    srcs = [
+        ":server",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "server",
+    srcs = [
+        "resources.go",
+        "shutdown.go",
+        "uptime.go",
+    ],
+    importpath = "go-infinity/rest/server",
+    visibility = ["//visibility:public"],
+)
