@@ -7,7 +7,8 @@ Implements infinity graph v2021.3 REST API, v1, as per March, 2022.
 ## Api implemented 
 
 - [x] Server endpoint
+- [x] FDB Endpoint 
 
-TODO: 
-- [ ] FDB Endpoint 
+TODO:
+- [ ] Object Resources
 

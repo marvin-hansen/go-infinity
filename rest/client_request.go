@@ -39,6 +39,7 @@ func (c *Client) request(req Requester, results interface{}) error {
 
 func (c *Client) do(r Requester) (*fasthttp.Response, error) {
 	req := c.newRequest(r)
+	// fmt.Printf("Path: %+v\n", string(r.Path()))
 
 	// fasthttp for http2.0
 	res := fasthttp.AcquireResponse()
