@@ -12,19 +12,20 @@ func TestAddSchema(t *testing.T) {
 	c := rest.NewClient(nil)
 	assert.NotNil(t, c, shared.ClientError)
 
-	res, err := c.AddSchema(schema.NewRequestForAddSchema([]byte(shared.TestAddSchema)))
+	testSchema := []byte(shared.TestAddSchema)
+	res, err := c.AddSchema(schema.NewRequestForAddSchema(testSchema))
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
 
 	println(res.String())
-
 }
 
 func TestUpdateSchema(t *testing.T) {
 	c := rest.NewClient(nil)
 	assert.NotNil(t, c, shared.ClientError)
 
-	res, err := c.UpdateSchema(schema.NewRequestForUpdateSchema([]byte(shared.TestUpdateSchema)))
+	testSchema := []byte(shared.TestUpdateSchema)
+	res, err := c.UpdateSchema(schema.NewRequestForUpdateSchema(testSchema))
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
 

@@ -1,12 +1,8 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_test")
 
 go_test(
-    name = "schema_test",
-    srcs = [
-        "class_schema_test.go",
-        "namespace_test.go",
-        "schema_test.go",
-    ],
+    name = "object_test",
+    srcs = ["object_test.go"],
     deps = [
         "//rest",
         "//rest/schema",
