@@ -40,6 +40,10 @@ func (req *RequestForBootPath) Payload() []byte {
 	return nil
 }
 
+func (req *RequestForBootPath) ResponseCode() int {
+	return 200
+}
+
 //**// Response //**//
 
 func NewResponseForBootPath() *ResponseForBootPath {

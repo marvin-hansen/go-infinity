@@ -26,6 +26,10 @@ func (req *RequestForShutdown) Payload() []byte {
 	return nil
 }
 
+func (req *RequestForShutdown) ResponseCode() int {
+	return 204 // No Content
+}
+
 //**// Response //**//
 
 func NewResponseForShutdown() *ResponseForShutdown {

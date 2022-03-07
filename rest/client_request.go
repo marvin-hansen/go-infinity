@@ -25,8 +25,8 @@ func (c *Client) shutdownRequest(r Requester) error {
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
 //
-func (c *Client) request(req Requester, results interface{}, targetStatusCode int) error {
-	res, reqErr := c.do(req, targetStatusCode)
+func (c *Client) request(req Requester, results interface{}) error {
+	res, reqErr := c.do(req)
 	if reqErr != nil {
 		return reqErr
 	}
@@ -41,7 +41,7 @@ func (c *Client) request(req Requester, results interface{}, targetStatusCode in
 // do build & executes the actual request from the rquester
 // requester - implementation
 // targetStatusCode the expected http status code i.e. 200
-func (c *Client) do(r Requester, targetStatusCode int) (*fasthttp.Response, error) {
+func (c *Client) do(r Requester) (*fasthttp.Response, error) {
 	req := c.newRequest(r)
 	// fmt.Printf("Path: %+v\n", string(r.Path()))
 
@@ -55,7 +55,7 @@ func (c *Client) do(r Requester, targetStatusCode int) (*fasthttp.Response, erro
 	// fmt.Printf("%+v\n", string(res.Body()))
 	// no usefull headers
 
-	if res.StatusCode() != targetStatusCode {
+	if res.StatusCode() != r.ResponseCode() {
 		var resp = new(Response)
 		if jsonErr := json.Unmarshal(res.Body(), resp); jsonErr != nil {
 			return nil, &APIError{

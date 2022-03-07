@@ -34,11 +34,23 @@ func TestGetSchema(t *testing.T) {
 	c := rest.NewClient(nil)
 	assert.NotNil(t, c, clientError)
 
-	res, err := c.GetSchema(schema.NewRequestForRetrieveSchema())
+	res, err := c.GetSchema(schema.NewRequestForGetSchema())
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
 
 	for _, e := range *res {
 		println(e.String())
 	}
+}
+
+func TestGetClassSchema(t *testing.T) {
+	c := rest.NewClient(nil)
+	assert.NotNil(t, c, clientError)
+
+	classID := "FleetData.Customer"
+	res, err := c.GetClassSchema(schema.NewRequestForGetClassSchema(classID))
+	assert.NoError(t, err)
+	assert.NotNil(t, res)
+
+	println(res.String())
 }

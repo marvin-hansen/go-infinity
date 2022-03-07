@@ -1,8 +1,9 @@
 package rest
 
 type Requester interface {
-	Path() string
-	Method() string
-	Query() string
-	Payload() []byte
+	Path() string      // path relative to URI i.e. /data/function/
+	Method() string    // http method i.e. get, post, put, delete etc
+	Query() string     // query to append after ? i.e. query?"my query"
+	Payload() []byte   // payload i.e. file to upload
+	ResponseCode() int // expected http status code the server should normally return.
 }

@@ -33,6 +33,10 @@ func (req *RequestForResources) Payload() []byte {
 	return nil
 }
 
+func (req *RequestForResources) ResponseCode() int {
+	return 200
+}
+
 //**// Response //**//
 
 func NewResponseForResources() *ResponseForResources {

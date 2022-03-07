@@ -31,6 +31,10 @@ func (req *RequestForUptime) Payload() []byte {
 	return nil
 }
 
+func (req *RequestForUptime) ResponseCode() int {
+	return 200
+}
+
 //**// Response //**//
 
 func NewResponseForUptime() *ResponseForUptime {
