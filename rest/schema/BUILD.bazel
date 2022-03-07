@@ -3,9 +3,14 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "schema",
     srcs = [
+        "add_class_schema.go",
         "add_schema.go",
+        "delete_class_schema.go",
         "fields.go",
-        "retrieve_schema.go",
+        "get_class_schema.go",
+        "get_schema.go",
+        "schema.go",
+        "update_class_schema.go",
         "update_schema.go",
     ],
     importpath = "go-infinity/rest/schema",

@@ -34,6 +34,10 @@ func (req *RequestForAddSchema) Payload() []byte {
 	return req.payload
 }
 
+func (req *RequestForAddSchema) ResponseCode() int {
+	return 201 // Created
+}
+
 //**// Response //**//
 
 func NewResponseForAddSchema() *ResponseForAddSchema {
@@ -44,9 +48,4 @@ func (r ResponseForAddSchema) String() string {
 	return fmt.Sprintf("Class Numbers: %v \n Uris: %v", r.ClassNumbers, r.Uris)
 }
 
-type ResponseForAddSchema AddSchema
-
-type AddSchema struct {
-	ClassNumbers []string `json:"classNumbers"`
-	Uris         []string `json:"uris"`
-}
+type ResponseForAddSchema SchemaResponse

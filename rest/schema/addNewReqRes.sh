@@ -22,27 +22,18 @@ fileName=$(to_lowercase "$snakeName")"$fileExt"
 
 pack_name=$namevar
 
-func_name="NewRequestFor"$name"ApiVersion"
-
 cat << EOF > $fileName
 package $pack_name
 
 import (
 	"fmt"
-	"go-infinity/rest/flags"
 	"net/http"
 )
-
-const defaultVersion = flags.VERSION
 
 //**// Request //**//
 
 func NewRequestFor$name() *RequestFor$name {
 	return &RequestFor$name{defaultVersion}
-}
-
-func $func_name(apiVersion string) *RequestFor$name {
-	return &RequestFor$name{apiVersion}
 }
 
 type RequestFor$name struct {
@@ -64,6 +55,10 @@ func (req *RequestFor$name) Query() string {
 
 func (req *RequestFor$name) Payload() []byte {
 	return nil
+}
+
+func (req *RequestFor$name) ResponseCode() int {
+	return 200 // ok
 }
 
 //**// Response //**//

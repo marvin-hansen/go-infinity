@@ -1,47 +1,13 @@
 package schema
 
-import (
-	"fmt"
-	"net/http"
-)
+import "fmt"
 
-//**// Request //**//
-
-func NewRequestForRetrieveSchema() *RequestForRetrieveSchema {
-	return &RequestForRetrieveSchema{defaultVersion}
+type SchemaResponse struct {
+	ClassNumbers []string `json:"classNumbers"`
+	Uris         []string `json:"uris"`
 }
 
-// RequestForRetrieveSchema Retrieves a representation of the complete schema for a federated database.
-// https://support.objectivity.com/sites/default/files/docs/ig/latest/index.html#page/topics%2Frest%2FrestSchemaGET.html%23
-type RequestForRetrieveSchema struct {
-	version string
-}
-
-func (req *RequestForRetrieveSchema) Path() string {
-	return "/" + req.version + "/schema"
-}
-
-func (req *RequestForRetrieveSchema) Method() string {
-	return http.MethodGet
-}
-
-func (req *RequestForRetrieveSchema) Query() string {
-	return ""
-}
-
-func (req *RequestForRetrieveSchema) Payload() []byte {
-	return nil
-}
-
-//**// Response //**//
-
-func NewResponseForRetrieveSchema() *ResponseForRetrieveSchema {
-	return new(ResponseForRetrieveSchema)
-}
-
-type ResponseForRetrieveSchema []Class
-
-type Class struct {
+type Schema struct {
 	ClassName       string       `json:"className"`
 	ClassNumber     string       `json:"classNumber"`
 	ShapeNumber     string       `json:"shapeNumber"`
@@ -52,8 +18,8 @@ type Class struct {
 	Attributes      []*Attribute `json:"attributes"`
 }
 
-func (s Class) String() string {
-	return fmt.Sprintf("[Class]: \n ClassName: %v \n  ClassNumber: %v \n ShapeNumber: %v \n SuperClass: %v \n  IsReferenceable: %v \n  IsInternal: %v \n  IsDeleted: %v \n  Attributes: %v ",
+func (s Schema) String() string {
+	return fmt.Sprintf("[Schema]: \n ClassName: %v \n  ClassNumber: %v \n ShapeNumber: %v \n SuperClass: %v \n  IsReferenceable: %v \n  IsInternal: %v \n  IsDeleted: %v \n  Attributes: %v ",
 		s.ClassName,
 		s.ClassNumber,
 		s.ShapeNumber,

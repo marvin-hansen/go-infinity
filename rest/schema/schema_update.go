@@ -34,6 +34,10 @@ func (req *RequestForUpdateSchema) Payload() []byte {
 	return req.payload
 }
 
+func (req *RequestForUpdateSchema) ResponseCode() int {
+	return 201 // Created
+}
+
 //**// Response //**//
 
 func NewResponseForUpdateSchema() *ResponseForUpdateSchema {
@@ -44,9 +48,4 @@ func (r ResponseForUpdateSchema) String() string {
 	return fmt.Sprintf("Class Numbers: %v \n Uris: %v", r.ClassNumbers, r.Uris)
 }
 
-type ResponseForUpdateSchema UpdateSchema
-
-type UpdateSchema struct {
-	ClassNumbers []string `json:"classNumbers"`
-	Uris         []string `json:"uris"`
-}
+type ResponseForUpdateSchema SchemaResponse
