@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "schema",
+    srcs = [
+        "add_schema.go",
+        "fields.go",
+        "retrieve_schema.go",
+        "update_schema.go",
+    ],
+    importpath = "go-infinity/rest/schema",
+    visibility = ["//visibility:public"],
+    deps = ["//rest/flags"],
+)

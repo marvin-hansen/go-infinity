@@ -24,8 +24,9 @@ func (c *Client) shutdownRequest(r Requester) error {
 // used for JSON unmarshaling
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
-func (c *Client) request(req Requester, results interface{}) error {
-	res, reqErr := c.do(req)
+//
+func (c *Client) request(req Requester, results interface{}, targetStatusCode int) error {
+	res, reqErr := c.do(req, targetStatusCode)
 	if reqErr != nil {
 		return reqErr
 	}
@@ -37,7 +38,10 @@ func (c *Client) request(req Requester, results interface{}) error {
 	return nil
 }
 
-func (c *Client) do(r Requester) (*fasthttp.Response, error) {
+// do build & executes the actual request from the rquester
+// requester - implementation
+// targetStatusCode the expected http status code i.e. 200
+func (c *Client) do(r Requester, targetStatusCode int) (*fasthttp.Response, error) {
 	req := c.newRequest(r)
 	// fmt.Printf("Path: %+v\n", string(r.Path()))
 
@@ -51,7 +55,7 @@ func (c *Client) do(r Requester) (*fasthttp.Response, error) {
 	// fmt.Printf("%+v\n", string(res.Body()))
 	// no usefull headers
 
-	if res.StatusCode() != 200 {
+	if res.StatusCode() != targetStatusCode {
 		var resp = new(Response)
 		if jsonErr := json.Unmarshal(res.Body(), resp); jsonErr != nil {
 			return nil, &APIError{

@@ -5,6 +5,7 @@ go_test(
     srcs = [
         "fdb_test.go",
         "flags_test.go",
+        "schema_test.go",
         "server_test.go",
     ],
     deps = [

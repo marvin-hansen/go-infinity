@@ -4,7 +4,9 @@ filegroup(
     name = "build",
     srcs = [
         ":rest",
-        "//rest/server:build",
+        "//rest/fdb",
+        "//rest/flags",
+        "//rest/server",
     ],
     visibility = ["//visibility:public"],
 )
@@ -19,13 +21,16 @@ go_library(
         "client_util.go",
         "errors.go",
         "req_fdb.go",
+        "req_fields.go",
         "req_interface.go",
+        "req_schema.go",
         "req_server.go",
     ],
     importpath = "go-infinity/rest",
     visibility = ["//visibility:public"],
     deps = [
         "//rest/fdb",
+        "//rest/schema",
         "//rest/server",
         "@com_github_json_iterator_go//:go",
         "@com_github_valyala_fasthttp//:fasthttp",
