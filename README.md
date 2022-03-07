@@ -10,6 +10,8 @@ Implements infinity graph v2021.3 REST API, v1, as per March, 2022.
 - [x] FDB Endpoint 
 - [x] Schema Endpoint
 
-TODO:
-- [ ] Object Resources
+Doing:
+- [-] Object Endpoint
 
+TODO:
+- [ ] Query Endpoint
