@@ -43,7 +43,7 @@ func (c *Client) request(req Requester, results interface{}) error {
 // targetStatusCode the expected http status code i.e. 200
 func (c *Client) do(r Requester) (*fasthttp.Response, error) {
 	req := c.newRequest(r)
-	// fmt.Printf("Path: %+v\n", string(r.Path()))
+	fmt.Printf("Path: %+v\n", string(r.Path()))
 
 	// fasthttp for http2.0
 	res := fasthttp.AcquireResponse()

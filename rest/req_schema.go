@@ -20,7 +20,8 @@ func (c *Client) UpdateSchema(req *schema.RequestForUpdateSchema) (*schema.Respo
 	return results, nil
 }
 
-// UpdateClassSchema Modifies an existing class, either renaming the class or deleting, renaming, or adding attributes.
+// UpdateClassSchema  BROKEN. TEST FAILS. DO NOT USE.
+// Modifies an existing class, either renaming the class or deleting, renaming, or adding attributes.
 func (c *Client) UpdateClassSchema(req *schema.RequestForUpdateClassSchema) (*schema.ResponseForUpdateClassSchema, error) {
 	results := schema.NewResponseForUpdateClassSchema()
 	if err := c.request(req, results); err != nil {
@@ -50,10 +51,9 @@ func (c *Client) GetClassSchema(req *schema.RequestForGetClassSchema) (*schema.R
 // DeleteClassSchema Deletes the class description for an existing type specified by fully qualified class name or class number.
 // Before deleting a class, remove all objects of that class from the federated database. Objects of the class become inaccessible to applications after the class is deleted.
 // Also, attributes of other classes that reference objects of the deleted class are deleted.
-func (c *Client) DeleteClassSchema(req *schema.RequestForDeleteClassSchema) (*schema.ResponseForDeleteClassSchema, error) {
-	results := schema.NewResponseForDeleteClassSchema()
-	if err := c.request(req, results); err != nil {
-		return nil, err
+func (c *Client) DeleteClassSchema(req *schema.RequestForDeleteClassSchema) error {
+	if err := c.shutdownRequest(req); err != nil {
+		return err
 	}
-	return results, nil
+	return nil
 }

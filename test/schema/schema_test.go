@@ -1,17 +1,18 @@
-package test
+package schema
 
 import (
 	"github.com/stretchr/testify/assert"
 	"go-infinity/rest"
 	"go-infinity/rest/schema"
+	"go-infinity/test/shared"
 	"testing"
 )
 
 func TestAddSchema(t *testing.T) {
 	c := rest.NewClient(nil)
-	assert.NotNil(t, c, clientError)
+	assert.NotNil(t, c, shared.ClientError)
 
-	res, err := c.AddSchema(schema.NewRequestForAddSchema([]byte(testAddSchema)))
+	res, err := c.AddSchema(schema.NewRequestForAddSchema([]byte(shared.TestAddSchema)))
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
 
@@ -21,9 +22,9 @@ func TestAddSchema(t *testing.T) {
 
 func TestUpdateSchema(t *testing.T) {
 	c := rest.NewClient(nil)
-	assert.NotNil(t, c, clientError)
+	assert.NotNil(t, c, shared.ClientError)
 
-	res, err := c.UpdateSchema(schema.NewRequestForUpdateSchema([]byte(testUpdateSchema)))
+	res, err := c.UpdateSchema(schema.NewRequestForUpdateSchema([]byte(shared.TestUpdateSchema)))
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
 
@@ -32,7 +33,7 @@ func TestUpdateSchema(t *testing.T) {
 
 func TestGetSchema(t *testing.T) {
 	c := rest.NewClient(nil)
-	assert.NotNil(t, c, clientError)
+	assert.NotNil(t, c, shared.ClientError)
 
 	res, err := c.GetSchema(schema.NewRequestForGetSchema())
 	assert.NoError(t, err)
@@ -41,16 +42,4 @@ func TestGetSchema(t *testing.T) {
 	for _, e := range *res {
 		println(e.String())
 	}
-}
-
-func TestGetClassSchema(t *testing.T) {
-	c := rest.NewClient(nil)
-	assert.NotNil(t, c, clientError)
-
-	classID := "FleetData.Customer"
-	res, err := c.GetClassSchema(schema.NewRequestForGetClassSchema(classID))
-	assert.NoError(t, err)
-	assert.NotNil(t, res)
-
-	println(res.String())
 }

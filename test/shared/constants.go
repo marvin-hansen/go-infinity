@@ -1,8 +1,17 @@
-package test
+package shared
 
-const clientError = "Client should not be nil"
+const ClientError = "Client should not be nil"
 
-const testUpdateSchema = `
+const TestUpdateClassSchema = `
+{
+  "className": "FleetData.Customer",
+  "attributesToDelete": [
+    "rewardPoints",
+  ],
+}
+`
+
+const TestUpdateSchema = `
 [
   {
   "className": "FleetData.Customer",
@@ -18,7 +27,7 @@ const testUpdateSchema = `
 ]
 `
 
-const testAddSchema = `[
+const TestAddSchema = `[
   {
     "className":"FleetData.Customer",
     "isReferenceable":true,
