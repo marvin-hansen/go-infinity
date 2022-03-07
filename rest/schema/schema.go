@@ -19,7 +19,7 @@ type Schema struct {
 }
 
 func (s Schema) String() string {
-	return fmt.Sprintf("[Schema]: \n ClassName: %v \n  ClassNumber: %v \n ShapeNumber: %v \n SuperClass: %v \n  IsReferenceable: %v \n  IsInternal: %v \n  IsDeleted: %v \n  Attributes: %v ",
+	return fmt.Sprintf("\n ClassName: %v \n  ClassNumber: %v \n ShapeNumber: %v \n SuperClass: %v \n  IsReferenceable: %v \n  IsInternal: %v \n  IsDeleted: %v \n  Attributes: %v ",
 		s.ClassName,
 		s.ClassNumber,
 		s.ShapeNumber,
