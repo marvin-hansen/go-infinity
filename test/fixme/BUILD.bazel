@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "fixme",
+    srcs = ["fixme_tests.go"],
+    importpath = "go-infinity/test/fixme",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//rest",
+        "//rest/schema",
+        "//test/shared",
+        "@com_github_stretchr_testify//assert",
+    ],
+)
