@@ -1,8 +1,18 @@
 package rest
 
+import "time"
+
+func getTimeout(config *ClientConfig) time.Duration {
+	if config == nil {
+		return defaultTimeout * time.Second
+	} else {
+		return time.Duration(config.Timeout) * time.Second
+	}
+}
+
 func getEndpoint(config *ClientConfig) string {
 	if config == nil {
-		return DefaultEndpoint
+		return defaultEndpoint
 	} else {
 		return config.GetConnectionString()
 	}

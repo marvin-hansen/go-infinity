@@ -5,7 +5,8 @@ import (
 	"time"
 )
 
-const DefaultEndpoint = "http://localhost:8185/"
+const defaultEndpoint = "http://localhost:8185/"
+const defaultTimeout = 5 // seconds
 
 type Client struct {
 	Endpoint    string
@@ -16,7 +17,7 @@ type Client struct {
 func NewClient(config *ClientConfig) *Client {
 	return &Client{
 		Endpoint:    getEndpoint(config),
+		HTTPTimeout: getTimeout(config),
 		HTTPC:       new(fasthttp.Client),
-		HTTPTimeout: 5 * time.Second,
 	}
 }
