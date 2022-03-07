@@ -52,8 +52,26 @@ func (c *Client) GetClassSchema(req *schema.RequestForGetClassSchema) (*schema.R
 // Before deleting a class, remove all objects of that class from the federated database. Objects of the class become inaccessible to applications after the class is deleted.
 // Also, attributes of other classes that reference objects of the deleted class are deleted.
 func (c *Client) DeleteClassSchema(req *schema.RequestForDeleteClassSchema) error {
-	if err := c.shutdownRequest(req); err != nil {
+	if err := c.requestWithoutReturnValue(req); err != nil {
 		return err
 	}
 	return nil
+}
+
+// GetAllNameSpaces RequestForGetAllNameSpaces Returns a list of all schema namespaces in the federated database.
+func (c *Client) GetAllNameSpaces(req *schema.RequestForGetAllNameSpaces) (*schema.ResponseForGetAllNameSpaces, error) {
+	results := schema.NewResponseForGetAllNameSpaces()
+	if err := c.request(req, results); err != nil {
+		return nil, err
+	}
+	return results, nil
+}
+
+// GetNameSpaceSchema Returns the schema representations for all classes in the specified namespace.
+func (c *Client) GetNameSpaceSchema(req *schema.RequestForGetNameSpace) (*schema.ResponseForGetNameSpace, error) {
+	results := schema.NewResponseForGetNameSpace()
+	if err := c.request(req, results); err != nil {
+		return nil, err
+	}
+	return results, nil
 }

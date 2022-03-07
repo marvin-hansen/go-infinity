@@ -14,7 +14,7 @@ import (
 // 2) An incorrect server URI
 // 3) The server was already taken offline before
 // https://support.objectivity.com/sites/default/files/docs/ig/latest/index.html#page/topics%2Frest%2FrestVersionShutdownPOST.html%23
-func (c *Client) shutdownRequest(r Requester) error {
+func (c *Client) requestWithoutReturnValue(r Requester) error {
 	req := c.newRequest(r)
 	res := fasthttp.AcquireResponse()
 	err := c.HTTPC.DoTimeout(req, res, c.HTTPTimeout)
@@ -43,7 +43,7 @@ func (c *Client) request(req Requester, results interface{}) error {
 // targetStatusCode the expected http status code i.e. 200
 func (c *Client) do(r Requester) (*fasthttp.Response, error) {
 	req := c.newRequest(r)
-	fmt.Printf("Path: %+v\n", string(r.Path()))
+	// fmt.Printf("Path: %+v\n", string(r.Path()))
 
 	// fasthttp for http2.0
 	res := fasthttp.AcquireResponse()
