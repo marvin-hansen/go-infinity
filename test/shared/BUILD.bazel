@@ -2,7 +2,11 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
 go_library(
     name = "shared",
-    srcs = ["constants.go"],
+    srcs = [
+        "object_test_data.go",
+        "schema_big.go",
+        "schema_small.go",
+    ],
     importpath = "go-infinity/test/shared",
     visibility = ["//visibility:public"],
 )

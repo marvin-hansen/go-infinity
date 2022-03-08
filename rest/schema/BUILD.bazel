@@ -6,7 +6,7 @@ go_library(
         "class_schema_delete.go",
         "class_schema_get.go",
         "class_schema_update.go",
-        "fields.go",
+        "flags.go",
         "name_space_get.go",
         "name_space_get_all.go",
         "namespace.go",

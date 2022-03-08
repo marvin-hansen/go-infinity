@@ -4,7 +4,6 @@ go_test(
     name = "schema_test",
     srcs = [
         "class_schema_test.go",
-        "namespace_test.go",
         "schema_test.go",
     ],
     deps = [

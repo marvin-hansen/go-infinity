@@ -22,6 +22,8 @@ go_library(
         "errors.go",
         "req_fdb.go",
         "req_interface.go",
+        "req_namespace.go",
+        "req_object.go",
         "req_schema.go",
         "req_server.go",
     ],
@@ -29,6 +31,7 @@ go_library(
     visibility = ["//visibility:public"],
     deps = [
         "//rest/fdb",
+        "//rest/object",
         "//rest/schema",
         "//rest/server",
         "@com_github_json_iterator_go//:go",

@@ -3,11 +3,13 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "object",
     srcs = [
-        "add_object.go",
-        "delete_object.go",
-        "get_object.go",
-        "update_object.go",
+        "flags.go",
+        "object_add.go",
+        "object_delete.go",
+        "object_get.go",
+        "object_update.go",
     ],
     importpath = "go-infinity/rest/object",
     visibility = ["//visibility:public"],
+    deps = ["//rest/flags"],
 )
