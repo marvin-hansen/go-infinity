@@ -7,3 +7,8 @@ type Requester interface {
 	Payload() []byte   // payload i.e. file to upload
 	ResponseCode() int // expected http status code the server should normally return.
 }
+
+type Responder interface {
+	GetRawMessage() []byte
+	SetRawMessage(raw []byte)
+}

@@ -50,12 +50,21 @@ func NewResponseForBootPath() *ResponseForBootPath {
 	return new(ResponseForBootPath)
 }
 
-func (r ResponseForBootPath) String() string {
+func (r *ResponseForBootPath) String() string {
 	return fmt.Sprintf("Bootfile: %v", r.Bootfile)
+}
+
+func (r *ResponseForBootPath) GetRawMessage() []byte {
+	return r.RawMessage
+}
+
+func (r *ResponseForBootPath) SetRawMessage(raw []byte) {
+	r.RawMessage = raw
 }
 
 type ResponseForBootPath Bootfile
 
 type Bootfile struct {
-	Bootfile string `json:"bootfile"`
+	Bootfile   string `json:"bootfile"`
+	RawMessage []byte
 }

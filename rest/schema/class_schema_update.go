@@ -48,3 +48,11 @@ func (r ResponseForUpdateClassSchema) String() string {
 }
 
 type ResponseForUpdateClassSchema SchemaResponse
+
+func (r *ResponseForUpdateClassSchema) GetRawMessage() []byte {
+	return r.RawMessage
+}
+
+func (r *ResponseForUpdateClassSchema) SetRawMessage(raw []byte) {
+	r.RawMessage = raw
+}

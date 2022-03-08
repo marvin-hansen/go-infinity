@@ -25,16 +25,19 @@ func (c *Client) requestWithoutReturnValue(r Requester) error {
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
 //
-func (c *Client) request(req Requester, results interface{}) error {
+func (c *Client) request(req Requester, results Responder) error {
 	res, reqErr := c.do(req)
 	if reqErr != nil {
 		return reqErr
 	}
 
+	results.SetRawMessage(res.Body())
+
 	decErr := decode(res, results)
 	if decErr != nil {
 		return decErr
 	}
+
 	return nil
 }
 

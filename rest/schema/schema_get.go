@@ -43,3 +43,9 @@ func NewResponseForGetSchema() *ResponseForRetrieveSchema {
 }
 
 type ResponseForRetrieveSchema []Schema
+
+// GetRawMessage not actually implemented. Only for interface compliance.
+func (s *ResponseForRetrieveSchema) GetRawMessage() (raw []byte) { return raw }
+
+// SetRawMessage not actually implemented. Only for interface compliance.
+func (s *ResponseForRetrieveSchema) SetRawMessage(raw []byte) {}

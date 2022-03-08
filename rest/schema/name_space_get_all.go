@@ -45,16 +45,20 @@ func NewResponseForGetAllNameSpaces() *ResponseForGetAllNameSpaces {
 
 type ResponseForGetAllNameSpaces []NameSpaceNames
 
+func (r *ResponseForGetAllNameSpaces) GetRawMessage() (raw []byte) { return raw }
+
+func (r *ResponseForGetAllNameSpaces) SetRawMessage(raw []byte) {}
+
 type NameSpaceNames struct {
 	Name string `json:"name"`
 }
 
-func (s *NameSpaceNames) String() string {
-	if s == nil {
+func (r *NameSpaceNames) String() string {
+	if r == nil {
 		return ""
 	} else {
 		return fmt.Sprintf("\n Namespace: %v ",
-			s.Name,
+			r.Name,
 		)
 	}
 }

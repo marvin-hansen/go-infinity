@@ -14,12 +14,11 @@ func (c *Client) AddObject(req *object.RequestForAddObject) (*object.ResponseFor
 }
 
 // UpdateObject Modifies an existing object by changing attribute values.
-func (c *Client) UpdateObject(req *object.RequestForUpdateObject) (*object.ResponseForUpdateObject, error) {
-	results := object.NewResponseForUpdateObject()
-	if err := c.request(req, results); err != nil {
-		return nil, err
+func (c *Client) UpdateObject(req *object.RequestForUpdateObject) error {
+	if err := c.requestWithoutReturnValue(req); err != nil {
+		return err
 	}
-	return results, nil
+	return nil
 }
 
 // GetObject Retrieves a representation of the object with the given OID.

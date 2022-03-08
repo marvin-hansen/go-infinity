@@ -1,7 +1,6 @@
 package object
 
 import (
-	"fmt"
 	"net/http"
 )
 
@@ -37,23 +36,5 @@ func (req *RequestForUpdateObject) Payload() []byte {
 }
 
 func (req *RequestForUpdateObject) ResponseCode() int {
-	return 200 // possible 204, if no error in spec
-}
-
-// possible no return required.
-// TODO: Test with curl
-//**// Response //**//
-
-func NewResponseForUpdateObject() *ResponseForUpdateObject {
-	return new(ResponseForUpdateObject)
-}
-
-func (r ResponseForUpdateObject) String() string {
-	// @FIXME
-	return fmt.Sprintf("Bootfile: %v", r.Field)
-}
-
-type ResponseForUpdateObject struct {
-	// @FIXME
-	Field string
+	return 204 //No content
 }

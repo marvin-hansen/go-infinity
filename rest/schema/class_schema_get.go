@@ -46,7 +46,7 @@ func NewResponseForGetClassSchema() *ResponseForGetClassSchema {
 
 type ResponseForGetClassSchema Schema
 
-func (s ResponseForGetClassSchema) String() string {
+func (s *ResponseForGetClassSchema) String() string {
 	return fmt.Sprintf("[Schema]: \n ClassName: %v \n  ClassNumber: %v \n ShapeNumber: %v \n SuperClass: %v \n  IsReferenceable: %v \n  IsInternal: %v \n  IsDeleted: %v \n  Attributes: %v ",
 		s.ClassName,
 		s.ClassNumber,
@@ -57,4 +57,12 @@ func (s ResponseForGetClassSchema) String() string {
 		s.IsDeleted,
 		s.Attributes,
 	)
+}
+
+func (s *ResponseForGetClassSchema) GetRawMessage() []byte {
+	return s.RawMessage
+}
+
+func (s *ResponseForGetClassSchema) SetRawMessage(raw []byte) {
+	s.RawMessage = raw
 }

@@ -20,7 +20,8 @@ func TestRequestForResources(t *testing.T) {
 	res, err := c.Resources(server.NewRequestForResources("v1"))
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
-	// println(res.String())
+
+	// println(string(res.GetRawMessage()))
 }
 
 func TestRequestForUptime(t *testing.T) {

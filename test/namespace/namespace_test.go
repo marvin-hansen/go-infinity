@@ -1,4 +1,4 @@
-package schema
+package namespace
 
 import (
 	"github.com/stretchr/testify/assert"

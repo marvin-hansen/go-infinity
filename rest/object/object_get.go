@@ -1,7 +1,6 @@
 package object
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
 )
@@ -46,15 +45,21 @@ func NewResponseForGetObject() *ResponseForGetObject {
 }
 
 func (r ResponseForGetObject) String() string {
-	return fmt.Sprintf("Class: %v \n ObjectID: %v \n  RawMessage: %v \n  ",
+	return fmt.Sprintf("Class: %v \n  RawMessage: %v \n  ",
 		r.Class,
-		r.ObjectID,
-		r.RawMessage,
+		string(r.RawMessage),
 	)
 }
 
 type ResponseForGetObject struct {
 	Class      string `json:"__class__"`
-	ObjectID   string `json:"__identifier__"`
-	RawMessage json.RawMessage
+	RawMessage []byte
+}
+
+func (r *ResponseForGetObject) GetRawMessage() []byte {
+	return r.RawMessage
+}
+
+func (r *ResponseForGetObject) SetRawMessage(raw []byte) {
+	r.RawMessage = raw
 }

@@ -44,6 +44,14 @@ func NewResponseForGetNameSpace() *ResponseForGetNameSpace {
 
 type ResponseForGetNameSpace Namespace
 
+func (s *ResponseForGetNameSpace) GetRawMessage() []byte {
+	return s.RawMessage
+}
+
+func (s *ResponseForGetNameSpace) SetRawMessage(raw []byte) {
+	s.RawMessage = raw
+}
+
 func (s *ResponseForGetNameSpace) String() string {
 	return fmt.Sprintf("Name: %v \n Classes: %v \n  ",
 		s.Name,

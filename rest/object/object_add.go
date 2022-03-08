@@ -7,20 +7,19 @@ import (
 
 //**// Request //**//
 
-func NewRequestForAddObject(objectID string, jsonObject []byte) *RequestForAddObject {
-	return &RequestForAddObject{objectID: objectID, payload: jsonObject, version: defaultVersion}
+func NewRequestForAddObject(jsonObject []byte) *RequestForAddObject {
+	return &RequestForAddObject{payload: jsonObject, version: defaultVersion}
 }
 
 // RequestForAddObject Adds a new object to a federated database and assigns an OID.
 // https://support.objectivity.com/sites/default/files/docs/ig/latest/index.html#page/topics%2Frest%2FrestObjectPOST.html%23
 type RequestForAddObject struct {
-	objectID string
-	payload  []byte
-	version  string
+	payload []byte
+	version string
 }
 
 func (req *RequestForAddObject) Path() string {
-	return "/" + req.version + "/" + "object" + "/" + req.objectID
+	return "/" + req.version + "/" + "object"
 }
 
 func (req *RequestForAddObject) Method() string {
@@ -53,6 +52,15 @@ func (r ResponseForAddObject) String() string {
 }
 
 type ResponseForAddObject struct {
-	ObjectID string `json:"__identifier__"`
-	Uri      string `json:"uri"`
+	ObjectID   string `json:"__identifier__"`
+	Uri        string `json:"uri"`
+	RawMessage []byte
+}
+
+func (r *ResponseForAddObject) GetRawMessage() []byte {
+	return r.RawMessage
+}
+
+func (r *ResponseForAddObject) SetRawMessage(raw []byte) {
+	r.RawMessage = raw
 }

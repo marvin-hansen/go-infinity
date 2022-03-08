@@ -49,3 +49,11 @@ func (r ResponseForAddSchema) String() string {
 }
 
 type ResponseForAddSchema SchemaResponse
+
+func (r *ResponseForAddSchema) GetRawMessage() []byte {
+	return r.RawMessage
+}
+
+func (r *ResponseForAddSchema) SetRawMessage(raw []byte) {
+	r.RawMessage = raw
+}

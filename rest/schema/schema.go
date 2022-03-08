@@ -5,6 +5,7 @@ import "fmt"
 type SchemaResponse struct {
 	ClassNumbers []string `json:"classNumbers"`
 	Uris         []string `json:"uris"`
+	RawMessage   []byte
 }
 
 type Schema struct {
@@ -16,6 +17,7 @@ type Schema struct {
 	IsDeleted       bool         `json:"isDeleted"`
 	SuperClass      interface{}  `json:"superClass"`
 	Attributes      []*Attribute `json:"attributes"`
+	RawMessage      []byte
 }
 
 func (s Schema) String() string {

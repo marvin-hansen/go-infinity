@@ -41,13 +41,25 @@ func NewResponseForUptime() *ResponseForUptime {
 	return new(ResponseForUptime)
 }
 
-func (r ResponseForUptime) String() string {
-	return fmt.Sprintf("[%v, %v]", r.Uptime, r.Versions)
+func (r *ResponseForUptime) String() string {
+	return fmt.Sprintf("Uptime: %v \n, Version %v",
+		r.Uptime,
+		r.Versions,
+	)
+}
+
+func (r *ResponseForUptime) GetRawMessage() []byte {
+	return r.RawMessage
+}
+
+func (r *ResponseForUptime) SetRawMessage(raw []byte) {
+	r.RawMessage = raw
 }
 
 type ResponseForUptime Uptime
 
 type Uptime struct {
-	Uptime   int64    `json:"uptime"`
-	Versions []string `json:"versions"`
+	Uptime     int64    `json:"uptime"`
+	Versions   []string `json:"versions"`
+	RawMessage []byte
 }

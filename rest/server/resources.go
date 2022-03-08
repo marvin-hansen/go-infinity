@@ -47,11 +47,20 @@ func (r ResponseForResources) String() string {
 	return fmt.Sprintf("[Version: %v, Resources: %v]", r.Version, r.Resources)
 }
 
+func (r *ResponseForResources) GetRawMessage() []byte {
+	return r.RawMessage
+}
+
+func (r *ResponseForResources) SetRawMessage(raw []byte) {
+	r.RawMessage = raw
+}
+
 type ResponseForResources RestResources
 
 type RestResources struct {
-	Version   string      `json:"version"`
-	Resources []*Resource `json:"resources"`
+	Version    string      `json:"version"`
+	Resources  []*Resource `json:"resources"`
+	RawMessage []byte
 }
 
 type Resource struct {
