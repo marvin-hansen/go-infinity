@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "query_test",
+    srcs = ["query_test.go"],
+    deps = [
+        "//rest",
+        "//rest/query",
+        "//test/shared",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

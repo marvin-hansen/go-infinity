@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "fdb_test",
+    srcs = ["fdb_test.go"],
+    deps = [
+        "//rest",
+        "//rest/fdb",
+        "//test/shared",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

@@ -1,17 +1,12 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_test")
 
 go_test(
-    name = "rest_test_test",
-    srcs = [
-        "fdb_test.go",
-        "flags_test.go",
-        "schema_test.go",
-        "server_test.go",
-    ],
+    name = "server_test",
+    srcs = ["server_test.go"],
     deps = [
         "//rest",
-        "//rest/fdb",
         "//rest/server",
+        "//test/shared",
         "@com_github_stretchr_testify//assert",
     ],
 )

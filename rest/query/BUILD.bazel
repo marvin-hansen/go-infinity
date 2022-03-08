@@ -2,7 +2,11 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
 go_library(
     name = "query",
-    srcs = ["query.go"],
+    srcs = [
+        "query.go",
+        "test.go",
+    ],
     importpath = "go-infinity/rest/query",
     visibility = ["//visibility:public"],
+    deps = ["//rest/flags"],
 )
