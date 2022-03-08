@@ -9,9 +9,13 @@ Implements infinity graph v2021.3 REST API, v1, as per March, 2022.
 - [x] Server endpoint
 - [x] FDB Endpoint 
 - [x] Schema Endpoint
+- [x] Object Endpoint
+- [x] Query Endpoint
 
 Doing:
-- [-] Object Endpoint
+- [ ] Indexing Endpoint
+
 
 TODO:
-- [ ] Query Endpoint
+- [ ] Transaction Endpoint
+- [ ] Admin Endpoint
