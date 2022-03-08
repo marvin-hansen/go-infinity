@@ -4,9 +4,13 @@ import (
 	"fmt"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/valyala/fasthttp"
+	"io"
 	"net/url"
 	"time"
 )
+
+// used for JSON unmarshaling
+var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
 // shutdownRequest doesn't get an actual response from the server and thus
 // doesn't process a server reply. It only returns an error if there was
@@ -21,10 +25,6 @@ func (c *Client) requestWithoutReturnValue(r Requester) error {
 	return checkError(err)
 }
 
-// used for JSON unmarshaling
-var json = jsoniter.ConfigCompatibleWithStandardLibrary
-
-//
 func (c *Client) request(req Requester, results Responder) error {
 	res, reqErr := c.do(req)
 	if reqErr != nil {
@@ -33,8 +33,29 @@ func (c *Client) request(req Requester, results Responder) error {
 
 	results.SetRawMessage(res.Body())
 
-	decErr := decode(res, results)
+	decErr := decode(res.Body(), results)
 	if decErr != nil {
+		return decErr
+	}
+
+	return nil
+}
+
+func (c *Client) requestQuery(req Requester, results Responder) error {
+	res, reqErr := c.do(req)
+	if reqErr != nil {
+		println("Request Error")
+		return reqErr
+	}
+
+	// Query returns an array of various types, so we have to prefix
+	// an extra node "entries" to Marshal the result into a struct that contains the raw message
+	queryRes := []byte("{" + "\"entries\":" + string(res.Body()) + "}")
+	results.SetRawMessage(queryRes)
+
+	decErr := decode(queryRes, results)
+	if decErr != nil {
+		println("Decode error")
 		return decErr
 	}
 
@@ -46,7 +67,7 @@ func (c *Client) request(req Requester, results Responder) error {
 // targetStatusCode the expected http status code i.e. 200
 func (c *Client) do(r Requester) (*fasthttp.Response, error) {
 	req := c.newRequest(r)
-	// fmt.Printf("Path: %+v\n", string(r.Path()))
+	// fmt.Printf("Path: %+v\n", r.Path())
 
 	// fasthttp for http2.0
 	res := fasthttp.AcquireResponse()
@@ -105,20 +126,19 @@ func (c *Client) newRequest(r Requester) *fasthttp.Request {
 	return req
 }
 
-func decode(res *fasthttp.Response, out interface{}) error {
-	var r = new(Response)
-	r.Result = out
-	err := json.Unmarshal(res.Body(), r.Result)
-	if err != nil {
-		r.Success = false
+func decode(inputJson []byte, outputObject interface{}) error {
+
+	var out io.Writer
+	enc := json.NewEncoder(out)
+	enc.SetIndent("", "    ")
+	if err := enc.Encode(inputJson); err != nil {
 		return err
-	} else {
-		r.Success = true
 	}
 
-	if !r.Success {
+	err := json.Unmarshal(inputJson, outputObject)
+	if err != nil {
 		return fmt.Errorf("decode error")
+	} else {
+		return nil
 	}
-
-	return nil
 }

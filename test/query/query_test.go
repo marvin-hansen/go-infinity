@@ -1,20 +1,23 @@
-package test
+package query
 
 import (
 	"github.com/stretchr/testify/assert"
 	"go-infinity/rest"
-	"go-infinity/rest/fdb"
+	"go-infinity/rest/query"
 	"go-infinity/test/shared"
 	"testing"
 )
 
-func TestRequestForBootPath(t *testing.T) {
+func TestQuery(t *testing.T) {
 	c := rest.NewClient(nil)
 	assert.NotNil(t, c, shared.ClientError)
 
-	res, err := c.DBPATH(fdb.NewRequestForBootPath())
+	q1 := "FROM FleetData.Vehicle RETURN *;"
+
+	res, err := c.Query(query.NewRequestForQuery(q1))
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
 
-	println(res.String())
+	println(string(res.GetRawMessage()))
+
 }
