@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "example_lib",
+    srcs = [
+        "main.go",
+        "schema.go",
+        "test_data.go",
+    ],
+    importpath = "go-infinity/example",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "example",
+    embed = [":example_lib"],
+    visibility = ["//visibility:public"],
+)
