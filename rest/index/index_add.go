@@ -33,7 +33,7 @@ func (req *RequestForAddIndex) Payload() []byte {
 }
 
 func (req *RequestForAddIndex) ResponseCode() int {
-	return 200 // ok
+	return 201 // created
 }
 
 //**// Response //**//
