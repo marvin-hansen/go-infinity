@@ -11,11 +11,10 @@ Implements infinity graph v2021.3 REST API, v1, as per March, 2022.
 - [x] Schema Endpoint
 - [x] Object Endpoint
 - [x] Query Endpoint
+- [x] Index Endpoint
 
 Doing:
-- [ ] Index Endpoint
-
+- [ ] Transaction Endpoint
 
 TODO:
-- [ ] Transaction Endpoint
 - [ ] Admin Endpoint
