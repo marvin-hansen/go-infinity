@@ -2,9 +2,9 @@
 # go-infinity
 Golang client for infinity graph. 
 
-Implements infinity graph v2021.3 REST API, v1, as per March, 2022. 
+Implements infinity graph v2021.3 REST API, v1, as per March 2022. 
 
-## Api implemented 
+## Api implemented (March / 2022)
 
 - [x] Server endpoint
 - [x] FDB Endpoint 
@@ -13,9 +13,7 @@ Implements infinity graph v2021.3 REST API, v1, as per March, 2022.
 - [x] Query Endpoint
 - [x] Index Endpoint
 - [x] Transaction Endpoint
-
-Doing:
-- [ ] Admin Endpoint
+- [x] Tool Endpoint (runs administrative tools on the infinity server and returns the output)
 
 Known issues:
 * Transaction through the endpoint may not work. Test fails with server side error. 
