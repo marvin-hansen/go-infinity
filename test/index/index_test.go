@@ -12,7 +12,7 @@ func TestAddIndex(t *testing.T) {
 	c := rest.NewClient(nil)
 	assert.NotNil(t, c, shared.ClientError)
 
-	idx := []byte(testAddIndex)
+	idx := testAddIndex
 	res, err := c.AddIndex(index.NewRequestForAddIndex(idx))
 	assert.NoError(t, err)
 	assert.NotNil(t, res)

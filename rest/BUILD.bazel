@@ -33,6 +33,7 @@ go_library(
     visibility = ["//visibility:public"],
     deps = [
         "//rest/fdb",
+        "//rest/index",
         "//rest/object",
         "//rest/query",
         "//rest/schema",

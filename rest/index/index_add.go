@@ -7,8 +7,8 @@ import (
 
 //**// Request //**//
 
-func NewRequestForAddIndex(index []byte) *RequestForAddIndex {
-	return &RequestForAddIndex{payload: index, version: defaultVersion}
+func NewRequestForAddIndex(jsonIndex string) *RequestForAddIndex {
+	return &RequestForAddIndex{payload: []byte(jsonIndex), version: defaultVersion}
 }
 
 type RequestForAddIndex struct {
@@ -47,8 +47,8 @@ func (r ResponseForAddIndex) String() string {
 }
 
 type ResponseForAddIndex struct {
-	Name       string
-	Uri        string
+	Name       string `json:"name"`
+	Uri        string `json:"uri"`
 	RawMessage []byte
 }
 

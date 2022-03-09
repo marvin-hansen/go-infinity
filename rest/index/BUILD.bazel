@@ -3,11 +3,9 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "index",
     srcs = [
-        "add_index.go",
-        "delete_index.go",
         "flags.go",
-        "get_all_indices.go",
-        "get_index.go",
+        "index_add.go",
+        "index_delete.go",
     ],
     importpath = "go-infinity/rest/index",
     visibility = ["//visibility:public"],
