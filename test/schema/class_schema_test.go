@@ -18,7 +18,6 @@ func TestGetClassSchema(t *testing.T) {
 	assert.NotNil(t, res)
 
 	println(res.String())
-
 }
 
 func TestDeleteClassSchema(t *testing.T) {

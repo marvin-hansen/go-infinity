@@ -5,9 +5,11 @@ go_library(
     srcs = [
         "add_index.go",
         "delete_index.go",
-        "get_all_indeces.go",
+        "flags.go",
+        "get_all_indices.go",
         "get_index.go",
     ],
     importpath = "go-infinity/rest/index",
     visibility = ["//visibility:public"],
+    deps = ["//rest/flags"],
 )

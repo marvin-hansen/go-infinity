@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "index_test",
+    srcs = ["index_test.go"],
+    deps = [
+        "//rest",
+        "//test/shared",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

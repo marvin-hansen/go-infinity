@@ -1,0 +1,13 @@
+{
+  "name": "myRentalContractIndex",
+  "indexedClass": "FleetData.RentalContract",
+  "isUnique": "true",
+  "keyedAttributes":
+    [
+      {
+        "attributeName": "trackingNumber"
+      }    
+    ]
+}
+
+

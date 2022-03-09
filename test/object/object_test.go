@@ -17,9 +17,8 @@ func TestPrepare(t *testing.T) {
 	assert.NotNil(t, c, shared.ClientError)
 
 	nameSpace := "FleetData"
-	namespaceSchema, errNameSpace := c.GetNameSpaceSchema(schema.NewRequestForGetNameSpace(nameSpace))
-	assert.NoError(t, errNameSpace)
-	if namespaceSchema == nil {
+	_, errNameSpace := c.GetNameSpaceSchema(schema.NewRequestForGetNameSpace(nameSpace))
+	if errNameSpace == nil {
 		println("No Schema, create one!")
 		testSchema := []byte(shared.TestBigSchema)
 		res, err := c.AddSchema(schema.NewRequestForAddSchema(testSchema))
