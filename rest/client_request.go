@@ -76,7 +76,7 @@ func (c *Client) do(r Requester) (*fasthttp.Response, error) {
 		return nil, err
 	}
 
-	fmt.Printf("%+v\n", string(res.Body()))
+	// fmt.Printf("%+v\n", string(res.Body()))
 	// no usefull headers
 
 	if res.StatusCode() != r.ResponseCode() {

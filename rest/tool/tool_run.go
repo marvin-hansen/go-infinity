@@ -7,11 +7,12 @@ import (
 
 //**// Request //**//
 
-func NewRequestForRunTool() *RequestForRunTool {
-	return &RequestForRunTool{defaultVersion}
+func NewRequestForRunTool(runCommandJson string) *RequestForRunTool {
+	return &RequestForRunTool{payload: []byte(runCommandJson), version: defaultVersion}
 }
 
 type RequestForRunTool struct {
+	payload []byte
 	version string
 }
 
@@ -28,7 +29,7 @@ func (req *RequestForRunTool) Query() string {
 }
 
 func (req *RequestForRunTool) Payload() []byte {
-	return nil
+	return req.payload
 }
 
 func (req *RequestForRunTool) ResponseCode() int {
@@ -42,11 +43,19 @@ func NewResponseForRunTool() *ResponseForRunTool {
 }
 
 func (r ResponseForRunTool) String() string {
-	return fmt.Sprintf("ReturnCode: %v \n ToolOutput: %v \n ToolError: %v \n",
+	return fmt.Sprintf("ReturnCode: %v \nToolOutput: %v \nToolError: %v \n",
 		r.ReturnCode,
 		r.ToolOutput,
 		r.ToolError,
 	)
+}
+
+func (r *ResponseForRunTool) GetRawMessage() []byte {
+	return r.RawMessage
+}
+
+func (r *ResponseForRunTool) SetRawMessage(raw []byte) {
+	r.RawMessage = raw
 }
 
 type ResponseForRunTool Response
@@ -56,12 +65,4 @@ type Response struct {
 	ToolOutput string
 	ToolError  string
 	RawMessage []byte
-}
-
-func (r *ResponseForRunTool) GetRawMessage() []byte {
-	return r.RawMessage
-}
-
-func (r *ResponseForRunTool) SetRawMessage(raw []byte) {
-	r.RawMessage = raw
 }
