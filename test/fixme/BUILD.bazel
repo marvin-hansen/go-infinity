@@ -2,12 +2,17 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
 go_library(
     name = "fixme",
-    srcs = ["fixme_tests.go"],
+    srcs = [
+        "fixme_tx.go",
+        "fixme_update_schema.go",
+        "flags.go",
+    ],
     importpath = "go-infinity/test/fixme",
     visibility = ["//visibility:public"],
     deps = [
         "//rest",
         "//rest/schema",
+        "//rest/transaction",
         "//test/shared",
         "@com_github_stretchr_testify//assert",
     ],

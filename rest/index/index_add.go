@@ -11,6 +11,8 @@ func NewRequestForAddIndex(jsonIndex string) *RequestForAddIndex {
 	return &RequestForAddIndex{payload: []byte(jsonIndex), version: defaultVersion}
 }
 
+// RequestForAddIndex Creates an index for the given class using the given attributes as keys.
+// https://support.objectivity.com/sites/default/files/docs/ig/latest/index.html#page/topics%2Frest%2FrestIndexPOST.html%23
 type RequestForAddIndex struct {
 	payload []byte
 	version string

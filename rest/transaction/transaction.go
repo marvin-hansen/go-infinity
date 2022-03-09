@@ -13,6 +13,8 @@ func NewRequestForTransaction(transaction string) *RequestForTransaction {
 	return &RequestForTransaction{payload: []byte(transaction), version: defaultVersion}
 }
 
+// RequestForTransaction Sends multiple requests for batch processing.
+// https://support.objectivity.com/sites/default/files/docs/ig/latest/index.html#page/topics%2Frest%2FrestTransactionPOST.html%23
 type RequestForTransaction struct {
 	payload []byte
 	version string

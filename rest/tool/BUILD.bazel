@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "tools",
+    srcs = [
+        "get_tools.go",
+        "run_tool.go",
+    ],
+    importpath = "go-infinity/rest/tools",
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "tool",
+    srcs = [
+        "flags.go",
+        "tool_get.go",
+        "tool_run.go",
+    ],
+    importpath = "go-infinity/rest/tool",
+    visibility = ["//visibility:public"],
+    deps = ["//rest/flags"],
+)

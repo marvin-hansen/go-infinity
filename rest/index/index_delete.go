@@ -10,6 +10,8 @@ func NewRequestForDeleteIndex(indexId string) *RequestForDeleteIndex {
 	return &RequestForDeleteIndex{IndexId: indexId, version: defaultVersion}
 }
 
+// RequestForDeleteIndex Deletes the named index from the federated database.
+// https://support.objectivity.com/sites/default/files/docs/ig/latest/index.html#page/topics%2Frest%2FrestIndexNameDELETE.html%23
 type RequestForDeleteIndex struct {
 	IndexId string
 	version string

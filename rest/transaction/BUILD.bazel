@@ -5,4 +5,5 @@ go_library(
     srcs = ["transaction.go"],
     importpath = "go-infinity/rest/transaction",
     visibility = ["//visibility:public"],
+    deps = ["//rest/flags"],
 )
