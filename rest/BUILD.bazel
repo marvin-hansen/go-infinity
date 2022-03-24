@@ -40,6 +40,7 @@ go_library(
         "//rest/query",
         "//rest/schema",
         "//rest/server",
+        "//rest/tool",
         "//rest/transaction",
         "@com_github_json_iterator_go//:go",
         "@com_github_valyala_fasthttp//:fasthttp",

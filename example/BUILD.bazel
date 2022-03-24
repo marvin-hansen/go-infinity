@@ -9,6 +9,11 @@ go_library(
     ],
     importpath = "go-infinity/example",
     visibility = ["//visibility:private"],
+    deps = [
+        "//rest",
+        "//rest/object",
+        "//rest/schema",
+    ],
 )
 
 go_binary(
