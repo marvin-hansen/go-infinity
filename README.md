@@ -48,10 +48,25 @@ Workarounds:
    make graph-build-image
 ```
 
-4) Start the container
+4) Run a new container
 
 ```bash 
-   make graph-start 
+   make graph-create-container 
+```
+
+## Managing the container 
+
+Start the container
+
+```bash 
+   make graph-start
+```
+
+
+Stop the container
+
+```bash 
+   make graph-stop  
 ```
 
 ## DB Setup

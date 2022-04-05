@@ -3,7 +3,7 @@ GET /v1/index throws a system error when used with CURL.
 
 GET /v1/index/{name} throws system error as well.
 
-it's unclear if it's a bug in the API server, but it's clearly not working.
+it's unclear if it's a bug in the client or the API server, but it's clearly not working.
 
 Thus, index endpoint not implemented.
 
