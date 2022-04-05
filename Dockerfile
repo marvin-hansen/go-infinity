@@ -37,7 +37,7 @@ COPY scripts/infinite/restApiConfig.xml restApiConfig.xml
 COPY scripts/infinite/restart.sh restart.sh
 COPY scripts/infinite/inf_entrypoint.sh entrypoint.sh
 COPY scripts/infinite/inf_start_rest_api.sh start_rest_api.sh
-COPY scripts/infinite/inf_new_kb.sh.sh new_kb.sh
+COPY scripts/infinite/inf_new_kb.sh new_kb.sh
 # make scripts executable
 RUN chmod +x *.sh
 
