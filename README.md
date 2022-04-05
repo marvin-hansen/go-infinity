@@ -1,3 +1,5 @@
+#Status: unmaintained. 
+
 
 # go-infinity
 Golang client for [infinity graph db](https://infinitegraph.com/). 
